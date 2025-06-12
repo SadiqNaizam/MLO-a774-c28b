@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
 	darkMode: ["class"],
@@ -52,22 +53,24 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+        // PRD specific colors
+        tsbPrimaryText: '#131B33',
+        tsbSecondaryText: '#0051B4',
+        tsbAccent: '#00A6E1', // PRD 'accent' color, mapped to CSS var --primary
+        tsbAccentSecondary: '#003974',
+        tsbSuccess: '#00A6E1', // PRD 'success' color
+        tsbError: '#FF4D4F', // PRD 'error' color, mapped to CSS var --destructive
+        tsbBorder: '#0051B4' // PRD 'border' color, mapped to CSS var --border
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				lg: 'var(--radius)', // default Shadcn/Radix size, now 0.375rem (rounded-md)
+				md: 'calc(var(--radius) - 2px)', // typically 0.375rem - 2px
+				sm: 'calc(var(--radius) - 4px)', // typically 0.375rem - 4px
+        full: '9999px', // for rounded-full buttons
 			},
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
